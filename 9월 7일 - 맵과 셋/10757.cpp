@@ -17,11 +17,10 @@ void sumFunc(int b_size, int s_size, string big, string small) {//더해주는 �
 		else {
 			sum.push_back(total + carry);
 			carry = 0;
-
 		}
 	}
 
-	if (b_size - i != 0) { // 자릿수 큰거 더해주기
+	if (b_size - i != 0) { // 아직 숫자 남아있는 경우
 		for (; i < b_size; i++) {// 혼자 더하기
 			if ((big[b_size - (i + 1)] - '0') + carry >= 10) { //캐리랑 더한 값이 10보다 크면
 				sum.push_back((big[b_size - (i + 1)] - '0') + carry - 10);
