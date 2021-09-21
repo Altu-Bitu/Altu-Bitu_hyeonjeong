@@ -1,4 +1,4 @@
-//11723 ÁýÇÕ
+//11723 ì§‘í•©
 #include<iostream>
 
 using namespace std;
@@ -28,16 +28,16 @@ void empty() {
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
-	int m, num; //¿¬»ê ¼ö, Àü´Þ °ª
-	string input; //¿¬»ê Á¾·ù ÀÔ·Â
+	int m, num; //ì—°ì‚° ìˆ˜, ì „ë‹¬ ê°’
+	string input; //ì—°ì‚° ì¢…ë¥˜ ìž…ë ¥
 
-	cin >> m; //¿¬»ê ¼ö ÀÔ·Â
+	cin >> m; //ì—°ì‚° ìˆ˜ ìž…ë ¥
 
 	while (m--) {
-		cin >> input; //¿¬»êÁ¾·ù
+		cin >> input; //ì—°ì‚°ì¢…ë¥˜
 
 		if (input == "add") {
-			cin >> num; //Àü´Þ °ª ÀÔ·Â
+			cin >> num; //ì „ë‹¬ ê°’ ìž…ë ¥
 			add(num);
 			continue;
 		}

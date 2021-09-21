@@ -1,23 +1,23 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<string>
 #include<cctype>
 
 using namespace std;
 
 string cppTojava(string str) {
-	string comp = ""; //¿Ï¼ºµÈ °ª
+	string comp = ""; //ì™„ì„±ëœ ê°’
 
-	if (str[0] == '_' || str[str.size() - 1] == '_') //1. Ã³À½,¸ÇµÚ¿¡ '_'ÀÎ °æ¿ì
+	if (str[0] == '_' || str[str.size() - 1] == '_') //1. ì²˜ìŒ,ë§¨ë’¤ì— '_'ì¸ ê²½ìš°
 		return "Error!";
 
 	for (int i = 0; i < str.size(); i++) {
-		if (isupper(str[i])) //2. ´ë¹®ÀÚÀÎ°æ¿ì
+		if (isupper(str[i])) //2. ëŒ€ë¬¸ìì¸ê²½ìš°
 			return "Error!";
 
 		if (str[i] == '_') {
-			if (str[i + 1] == '_') //3. ¿¬¼Ó '__'ÀÎ °æ¿ì
+			if (str[i + 1] == '_') //3. ì—°ì† '__'ì¸ ê²½ìš°
 				return "Error!";
-			comp += toupper(str[++i]); // ´ÙÀ½ ±ÛÀÚ ´ë¹®ÀÚ·Î ¹Ù²ã¼­ ÀúÀå
+			comp += toupper(str[++i]); // ë‹¤ìŒ ê¸€ì ëŒ€ë¬¸ìë¡œ ë°”ê¿”ì„œ ì €ì¥
 		}
 		else
 			comp += str[i];
@@ -26,17 +26,17 @@ string cppTojava(string str) {
 }
 
 string javaTocpp(string str) {
-	string comp = ""; //¿Ï¼ºµÈ °ª
+	string comp = ""; //ì™„ì„±ëœ ê°’
 
 
-	if (!islower(str[0])) //1. Ã¹±ÛÀÚ ´ë¹®ÀÚ¸é ¿À·ù
+	if (!islower(str[0])) //1. ì²«ê¸€ì ëŒ€ë¬¸ìë©´ ì˜¤ë¥˜
 		return "Error!";
 
 	for (int i = 0; i < str.size(); i++) {
 		if (!islower(str[i]) && !isupper(str[i]))
-			return "Error!"; // 2. ¾ËÆÄºª ¾Æ´Ñ °æ¿ì ¿¡·¯
+			return "Error!"; // 2. ì•ŒíŒŒë²³ ì•„ë‹Œ ê²½ìš° ì—ëŸ¬
 
-		if (isupper(str[i])) { //´ë¹®ÀÚÀÎ °æ¿ì '_',¼Ò¹®ÀÚ·Î º¯°æ
+		if (isupper(str[i])) { //ëŒ€ë¬¸ìì¸ ê²½ìš° '_',ì†Œë¬¸ìë¡œ ë³€ê²½
 			comp += '_';
 			comp += tolower(str[i]);
 		}
@@ -49,16 +49,16 @@ string javaTocpp(string str) {
 
 string isType(string str) {
 	for (int i = 0; i < str.size(); i++) {
-		if (isupper(str[i])) {// ´ë¹®ÀÚÀÎ °æ¿ì java
+		if (isupper(str[i])) {// ëŒ€ë¬¸ìì¸ ê²½ìš° java
 			return javaTocpp(str);
 		}
-		else if (str[i] == '_') {// '_' ÀÖ´Â °æ¿ì cpp
+		else if (str[i] == '_') {// '_' ìˆëŠ” ê²½ìš° cpp
 
 			return cppTojava(str);
 		}
 	}
 
-	return str;// ´ë¹®ÀÚ, '_' ¸ğµÎ ¾ø´Â °æ¿ì
+	return str;// ëŒ€ë¬¸ì, '_' ëª¨ë‘ ì—†ëŠ” ê²½ìš°
 
 }
 
@@ -67,9 +67,9 @@ int main() {
 	cin.tie(NULL);
 	string str;
 
-	cin >> str;//ÀÔ·Â
+	cin >> str;//ì…ë ¥
 
-	cout << isType(str); //c++ÀÎÁö javaÀÎÁö µÑ´Ù ¾Æ´ÑÁö ÆÇº°
+	cout << isType(str); //c++ì¸ì§€ javaì¸ì§€ ë‘˜ë‹¤ ì•„ë‹Œì§€ íŒë³„
 
 
 	return 0;
