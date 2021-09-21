@@ -1,53 +1,57 @@
-#include<iostream>
+Ôªø#include<iostream>
 #include<queue>
 #include<algorithm>
 #include<vector>
 
 using namespace std;
 priority_queue<int> pq;
-vector<int> minimum; //√÷º“«— « ø‰«— ∏∂¿œ∏Æ¡ˆ
+vector<int> minimum; //ÏµúÏÜåÌïú ÌïÑÏöîÌïú ÎßàÏùºÎ¶¨ÏßÄ
 
-void mileageNeed(int applypeople, int student, int n) {
-	int stu;
+void mileageNeed(int applypeople, int student) {
+	int stu=0;
+	int apply = applypeople;
 
 
-	while (applypeople--) {//«–ª˝∫∞ ∏∂¿œ∏Æ¡ˆ ¡°ºˆ ¿‘∑¬
+	while (apply--) {//ÌïôÏÉùÎ≥Ñ ÎßàÏùºÎ¶¨ÏßÄ Ï†êÏàò ÏûÖÎ†•
 		cin >> stu;
 		pq.push(stu);
 	}
 
 	if (applypeople < student) {
-		minimum.push_back(0); //ºˆ∞≠¿Œø¯¿Ã ¥ı ∏π¿∏∏È «◊ªÛ ¬¸
-		return;
+		minimum.push_back(0); //ÏàòÍ∞ïÏù∏ÏõêÏù¥ Îçî ÎßéÏúºÎ©¥ Ìï≠ÏÉÅ Ï∞∏
+	}
+	else {
+		while (student--) {//ÏµúÏÜåÌïú ÌïÑÏöîÌïú ÎßàÏùºÎ¶¨ÏßÄ Ï†ÄÏû•
+			stu = pq.top();
+			pq.pop();
+			
+		}
+		minimum.push_back(stu);
 	}
 
-	while (student--) {//√÷º“«— « ø‰«— ∏∂¿œ∏Æ¡ˆ ¿˙¿Â
-		stu = pq.top();
+	 while (!pq.empty()) {
 		 pq.pop();
-	}
-	 minimum.push_back(stu);
-	 for (int i = 0; i < n; i++) {
-		 cout << minimum[i] << ', ';
 	 }
+	
 }
 
-int mileageSort(int m, int n) {
-	int subject = 0, i=0, num=0;
+int mileageSort(int m ,int n) {
+	int subject = 0, num=0,i=0;
 	sort(minimum.begin(), minimum.end());
 
-	for (int i = 0; i < n; i++) {
-		cout << minimum[i] << ', ';
-	}
-	while(m>0){
+	while(m>0 && i<n){
 		if (minimum[i] == 0) {
-			subject++; m -= 1;
+			subject++; m = m - 1;
 		}
 		else {
 			num = m - minimum[i];
 			if (num >= 0) {
 				subject++; m = num;
 			}
+			else
+				break;
 		}
+		i++;
 	}
 	return subject;
 }
@@ -56,14 +60,17 @@ int main() {
 	int n, m;
 	int mileage;
 
-	cin >> n >> m; //∞˙∏Òºˆ, ∏∂¿œ∏Æ¡ˆ ºˆ
+	cin >> n >> m; //Í≥ºÎ™©Ïàò, ÎßàÏùºÎ¶¨ÏßÄ Ïàò
 
-	int applypeople, student;//Ω≈√ª«— ªÁ∂˜ºˆ, ºˆ∞≠¿Œø¯
-	while (n--) {
+	int applypeople, student;//Ïã†Ï≤≠Ìïú ÏÇ¨ÎûåÏàò, ÏàòÍ∞ïÏù∏Ïõê
+	int i = n;
+	while (i--) {
 		cin >> applypeople >> student;
-		mileageNeed(applypeople,student,n); 
+		mileageNeed(applypeople,student); 
 	}
 
-	mileage = mileageSort(m, n);
-	cout << mileage;
+	cout << mileageSort(m, n) <<endl;
+
+
+	return 0;
 }
