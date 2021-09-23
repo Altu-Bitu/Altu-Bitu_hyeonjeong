@@ -29,7 +29,6 @@ int main() {
 			if (guitar[n1].top() > n2) { //자기보다 더 큰 프렛번호 있는경우
 				guitar[n1].pop();
 				move++;
-				continue;
 			}
 
 		}
