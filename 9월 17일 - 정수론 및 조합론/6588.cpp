@@ -36,13 +36,13 @@ int main() {
 			a = i;
 			b = n - i;
 			if (num[a] && num[b]) { //둘다 소수라면
-				cout << n << " = " << a << " + " << b<<endl;
+				cout << n << " = " << a << " + " << b<<'\n';
 				test = true;
 				break;
 			}
 		}
 			if(!test)
-				cout << "Goldbach's conjecture is wrong."<<endl;
+				cout << "Goldbach's conjecture is wrong."<<'\n';
 		}
 	
 	return 0;
